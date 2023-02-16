@@ -18,63 +18,35 @@ const Lesson = () => {
 
       let maxWidth = 0;
 
-      const getMaxWidth = () => {
-        sections.forEach((section) => {
-          maxWidth += section.offsetWidth;
-        });
-      };
-
-      getMaxWidth();
+      sections.forEach((section) => {
+        maxWidth += section.offsetWidth;
+      });
 
       gsap.to(sections, {
-        x: () => `-${maxWidth}`,
+        x: `-${maxWidth}`,
         scrollTrigger: {
-          trigger: "#smooth-wrapper",
-          pin: true,
+          trigger: "body",
           scrub: true,
-          start: "center center",
           end: () => `+=${maxWidth}`,
-          invalidateOnRefresh: true,
+          markers: false,
         },
       });
 
-      // gsap.to(sections, {
-      //   x: `-${maxWidth}`,
-      //   scrollTrigger: {
-      //     start: "top center",
-      //   },
-      // });
+      ScrollTrigger.create({
+        trigger: ".landing_big_text_container",
+        pin: true,
+        scrub: true,
+        start: "top center",
+        end: `+=${maxWidth}`,
+      });
 
-      // const tl = gsap.timeline({
-      //   scrollTrigger: {
-      //     trigger: ".smooth-wrapper",
-      //     pin: true,
-      //     scrub: true,
-      //     invalidateOnRefresh: true,
-      //     end: () => `+=${maxWidth}`,
-      //     markers: false,
-      //   },
-      // });
-
-      // tl.to(sections, {
-      //   x: () => `-${maxWidth}`,
-      // });
-
-      // tl.to(".landing_big_text_container", {
-      //   scrollTrigger: {
-      //     pin: ".landing_big_text_container",
-      //     start: "top center",
-      //     end: `+=${maxWidth + 2500}`,
-      //   },
-      // });
-
-      // tl.to(".landing_big_text_container_1", {
-      //   scrollTrigger: {
-      //     pin: ".landing_big_text_container_1",
-      //     start: "top center",
-      //     end: `+=${maxWidth + 2500}`,
-      //   },
-      // });
+      ScrollTrigger.create({
+        trigger: ".landing_big_text_container_1",
+        pin: true,
+        scrub: true,
+        start: "top center",
+        end: `+=${maxWidth}`,
+      });
     }, containerRef);
 
     return () => ctx.revert();
@@ -108,7 +80,7 @@ const Lesson = () => {
           <div
             className="padding_className"
             style={{
-              height: 5000,
+              height: 2000,
             }}
           ></div>
         </div>
