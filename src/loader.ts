@@ -12,6 +12,8 @@ const initLoader = () => {
     },
   });
 
+  //
+
   const timelineOut = gsap.timeline({
     defaults: {
       duration: 1.2,
