@@ -1,0 +1,25 @@
+{
+  "name": "vite-greensock",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test": "node ./build.js"
+  },
+  "devDependencies": {
+    "@types/imagesloaded": "^4.1.2",
+    "typescript": "^4.9.3",
+    "vite": "^4.1.0",
+    "vite-tsconfig-paths": "^4.0.5"
+  },
+  "dependencies": {
+    "@barba/core": "^2.9.7",
+    "gsap": "^3.11.4",
+    "imagesloaded": "^5.0.0",
+    "lodash": "^4.17.21",
+    "smooth-scrollbar": "^8.8.1"
+  }
+}
