@@ -11,5 +11,6 @@ gsap.registerPlugin(ScrollTrigger, GSDevTools);
 window.addEventListener("load", () => {
   initPageTransition();
 
+  // f
   // GSDevTools.create();
 });
