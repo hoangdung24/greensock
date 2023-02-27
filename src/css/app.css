@@ -26,6 +26,7 @@
 body {
   font: 16px/1.7 "Source Sans Pro", Helvetica, Helvetica Neue, Arial, sans-serif;
   color: var(--text-dark-color);
+  overflow: hidden;
 }
 /* hide page content by default */
 .is-loading #main,
@@ -50,6 +51,7 @@ body {
   width: 100%;
   top: 0;
   left: 0;
+  z-index: 2;
 }
 
 /* =Top Nav */
@@ -414,6 +416,7 @@ header h1 span {
   left: 0;
   width: 100%;
   overflow: hidden;
+  /* visibility: hidden; */
 }
 .loader__mask {
   position: absolute;
@@ -424,7 +427,7 @@ header h1 span {
   height: 100%;
   background: var(--bcg-loaderblue) url("/img/img_logo.svg") no-repeat center;
   background-size: 155px 155px;
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 .loader .inner,
 .loader__content .inner {
@@ -434,6 +437,9 @@ header h1 span {
 .loader .inner {
   background-color: var(--bcg-loaderbluedark);
   position: relative;
+  transform: scaleY(0.005);
+  transform-origin: bottom;
+  overflow: hidden;
 }
 .loader .progress {
   background-color: var(--bcg-lightblue);
@@ -442,6 +448,8 @@ header h1 span {
   top: 0;
   width: var(--loader-width);
   height: var(--loader-height);
+  /* transform: scaleY(0.005);
+  transform-origin: bottom; */
 }
 .loader__content {
   z-index: 4;
@@ -727,4 +735,32 @@ section {
 
 .gs-dev-tools {
   z-index: 99;
+}
+
+.shuttle {
+  display: block;
+  margin: 3rem 0;
+  position: relative;
+}
+
+.red {
+  color: red;
+}
+
+.blue {
+  color: blue;
+}
+
+.green {
+  color: green;
+}
+
+button {
+  background-color: #e83c6c;
+  border: none;
+  border-radius: 0.3rem;
+  color: white;
+  padding: 0.7rem 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
 }

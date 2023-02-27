@@ -1,1 +1,1 @@
-export default "hello";
+console.log(process.cwd(), import.meta.url);
