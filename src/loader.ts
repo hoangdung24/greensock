@@ -1,87 +1,70 @@
 import gsap from "gsap";
 
 const initLoader = () => {
-  const timelineIn = gsap.timeline({
+  const masterTl = gsap.timeline();
+  const tlIn = gsap.timeline({
     defaults: {
       duration: 1,
-      ease: "power2.out",
     },
     onComplete: () => {
-      const bodyElement = $("body");
-      bodyElement.removeClass("is-loading");
+      $("body").removeClass("is-loading");
     },
   });
-
-  //
-
-  const timelineOut = gsap.timeline({
-    defaults: {
-      duration: 1.2,
-      ease: "power2.inOut",
-    },
+  const tlOut = gsap.timeline({
     delay: 1,
+    defaults: {
+      duration: 1,
+    },
   });
 
-  const masterTimeline = gsap.timeline();
-
-  const main = $("#main");
   const loaderInner = $(".loader .inner");
   const image = $(".loader__image img");
-  const imageMask = $(".loader__image--mask");
-  const line1 = $(".loader__title--mask:nth-child(1) span");
-  const line2 = $(".loader__title--mask:nth-child(2) span");
-
-  const lineMasks = gsap.utils.toArray(".loader__title--mask");
-  const loader = $(".loader");
+  const loaderImageMask = $(".loader__image--mask");
   const loaderContent = $(".loader__content");
+  const titles = $(".loader__title span");
+  const titleMasks = $(".loader__title--mask");
 
-  timelineIn
+  tlIn
     .set(loaderContent, {
       autoAlpha: 1,
     })
+    .to(loaderInner, {
+      scaleY: 1,
+      transformOrigin: "bottom",
+    })
     .from(
-      loaderInner,
-      {
-        scaleY: 0,
-        transformOrigin: "bottom",
-      },
-      0.2
-    )
-    .from(
-      imageMask,
+      loaderImageMask,
       {
         yPercent: 100,
       },
       "-=0.5"
     )
+    .from(image, { yPercent: -80 }, "<")
     .from(
-      image,
-      {
-        yPercent: -80,
-      },
-      "<"
-    )
-    .from(
-      [line1, line2],
+      titles,
       {
         yPercent: 100,
-        stagger: 0.1,
+        stagger: 0.2,
       },
-      "-=0.5"
+      "-=0.3"
     );
 
-  timelineOut
-    .to(lineMasks, { yPercent: -100, stagger: 0.2 })
+  const loader = $(".loader");
+
+  tlOut
+    .to(titleMasks, {
+      stagger: 0.1,
+      yPercent: -100,
+    })
     .to(
       [loader, loaderContent],
       {
         yPercent: -100,
       },
-      "<"
-    )
-    .from(main, { y: 150 }, "<");
+      "-=0.5"
+    );
 
-  masterTimeline.add(timelineIn).add(timelineOut);
+  masterTl.add(tlIn).add(tlOut);
 };
 
 export { initLoader };

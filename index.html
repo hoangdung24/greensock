@@ -5,9 +5,11 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + TS</title>
+
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <!-- class="is-loading" -->
-  <body data-barba="wrapper">
+  <body class="is-loading" data-barba="wrapper">
     <div class="loader">
       <div class="loader__mask">
         <div class="inner">
@@ -340,5 +342,22 @@
 
     <script src="/GSDevTools.min.js"></script>
     <script type="module" src="/src/main.ts"></script>
+    <script>
+      const move = () => {
+        for (let i = 0; i < 3; i++) {
+          const shuttleID = `shuttle${i + 1}`;
+          let shuttle = document.getElementById(shuttleID);
+          let position = 0;
+          setInterval(() => {
+            if (position > window.innerWidth / 1.2) {
+              position = 0;
+            } else {
+              position++;
+              shuttle.style.left = position + "px";
+            }
+          }, 5);
+        }
+      };
+    </script>
   </body>
 </html>

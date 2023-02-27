@@ -1,13 +1,12 @@
 import { resolve } from "path";
 import { defineConfig } from "vite";
+import { comlink } from "vite-plugin-comlink";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig(({ mode }) => {
-  console.log(mode);
-
   return {
     root: resolve(__dirname),
-    plugins: [tsconfigPaths()],
+    plugins: [tsconfigPaths(), comlink()],
     publicDir: resolve(__dirname, "public"),
     css: {},
     build: {
@@ -15,5 +14,8 @@ export default defineConfig(({ mode }) => {
     },
     base: mode === "production" ? "/greensock/" : "/",
     esbuild: {},
+    worker: {
+      plugins: [comlink()],
+    },
   };
 });
