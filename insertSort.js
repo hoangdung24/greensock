@@ -72,6 +72,3 @@ const insetSort4 = (input) => {
 // insetSort2(UNSORT_ARR);
 // insetSort3(UNSORT_ARR);
 insetSort4(UNSORT_ARR);
-
-//
-//
