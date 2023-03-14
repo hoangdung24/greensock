@@ -21,7 +21,7 @@ jobs:
       - name: Publish JS file
         id: publish
         # run: ls ./dist
-        run: find dist/*.js -type f -exec echo '::set-output name=script-file::{}' ';'
+        run: find dist/*.js -type f -exec echo 'script-file=' >> $GITHUB_OUTPUT '{}' ';'
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
