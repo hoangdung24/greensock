@@ -23,7 +23,7 @@ jobs:
           restore-keys: |
             deps-node-modules-
       - name: Install dependencies
-        run: npm install
+        run: npm ci
       - name: Build
         run: npm run build
       - name: Publish JS file
@@ -52,7 +52,7 @@ jobs:
           restore-keys: |
             deps-node-modules-
       - name: Install dependencies
-        run: npm install
+        run: npm ci
       - name: Get Artifact
         uses: actions/download-artifact@v3
         with:
