@@ -20,6 +20,8 @@ jobs:
         with:
           path: ~/.npm
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            deps-node-modules-
       - name: Install dependencies
         if: steps.deps-node-modules.outputs.cache-hit != 'true'
         run: npm install
@@ -48,6 +50,8 @@ jobs:
         with:
           path: ~/.npm
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+              restore-keys: |
+            deps-node-modules-
       - name: Install dependencies
         if: steps.deps-node-modules.outputs.cache-hit != 'true'
         run: npm install
