@@ -1,0 +1,27 @@
+name: Deploy Artifact
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+      - uses: actions/checkout@v3
+      - name: Setup Node
+      - uses: actions/setup-node@v3
+      - name: Install dependencies
+      - run: npm ci
+      - name: Upload Artifact
+      - uses: actions/upload-artifact@v3
+      - with:
+        name: demo-artifact
+        path: dist
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy
+      - run: echo "Deploying..."
