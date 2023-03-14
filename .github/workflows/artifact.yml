@@ -7,6 +7,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      script-file: ${{ steps.publish.outputs.script-file }}
     steps:
       - name: Get code
         uses: actions/checkout@v3
@@ -17,8 +19,9 @@ jobs:
       - name: Build
         run: npm run build
       - name: Publish JS file
+        id: publish
         # run: ls ./dist
-        run: find dist/*.js -type f -exec echo '{}' ';'
+        run: find dist/*.js -type f -exec echo '::set-output name=script-file::{}' ';'
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
@@ -34,5 +37,9 @@ jobs:
           name: demo-artifact
       - name: Echo Contents
         run: ls
+      - name: Output filename
+        run: echo "${{ needs.build.outputs.script-file }}"
+      - name: Github Context
+        run: echo "${{ github }}"
       - name: deploy
         run: echo "Deploying..."
