@@ -13,9 +13,11 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
       - name: Install dependencies
-        run: npm install
+        run: npm ci
       - name: Build
         run: npm run build
+      - name: Publish JS file
+        run: find dist/assets/*.js -type f -exec echo '{}' ';'
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
