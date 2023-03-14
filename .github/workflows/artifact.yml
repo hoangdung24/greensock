@@ -23,7 +23,12 @@ jobs:
           restore-keys: |
             deps-node-modules-
       - name: Install dependencies
-        run: npm ci
+        run: |
+          if [[ -e package-lock.json ]]; then
+          npm ci
+          else
+          npm i
+          fi
       - name: Build
         run: npm run build
       - name: Publish JS file
@@ -52,7 +57,12 @@ jobs:
           restore-keys: |
             deps-node-modules-
       - name: Install dependencies
-        run: npm ci
+        run: |
+          if [[ -e package-lock.json ]]; then
+          npm ci
+          else
+          npm i
+          fi
       - name: Get Artifact
         uses: actions/download-artifact@v3
         with:
