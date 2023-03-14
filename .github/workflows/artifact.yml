@@ -24,7 +24,6 @@ jobs:
           restore-keys: |
             deps-node-modules-
       - name: Install dependencies
-        if: steps.deps-node-modules.outputs.cache-hit != 'true'
         run: |
           if [[ -e package-lock.json ]]; then
           npm ci
@@ -59,7 +58,6 @@ jobs:
           restore-keys: |
             deps-node-modules-
       - name: Install dependencies
-        if: steps.deps-node-modules.outputs.cache-hit != 'true'
         run: |
           if [[ -e package-lock.json ]]; then
           npm ci
