@@ -9,16 +9,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get code
-      - uses: actions/checkout@v3
+        uses: actions/checkout@v3
       - name: Setup Node
-      - uses: actions/setup-node@v3
+        uses: actions/setup-node@v3
+
       - name: Install dependencies
-      - run: npm install
+        run: npm install
       - name: Build
-      - run: npm run build
+        run: npm run build
       - name: Upload Artifact
-      - uses: actions/upload-artifact@v3
-      - with:
+        uses: actions/upload-artifact@v3
+        with:
           name: demo-artifact
           path: dist
   deploy:
@@ -26,4 +27,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: deploy
-      - run: echo "Deploying..."
+        run: echo "Deploying..."
