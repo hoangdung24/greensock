@@ -84,4 +84,14 @@ jobs:
         run: echo "${{ github }}"
       - name: deploy
         run: echo "Deploying..."
+  test-github-secret:
+    runs-on: ubuntu-latest
+    environment: testing
+    env:
+      IS_TESTING: ${{ secrets.IS_TESTING }}
+    steps:
+      name: ECHO
+      run: |
+        env
+
 #
