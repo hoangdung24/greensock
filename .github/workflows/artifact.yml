@@ -12,6 +12,7 @@ jobs:
     env:
       TEST_ENV: HELLO
       TEST_ENVV: WORLD
+      TEST_SECRET: ${{ secrets.TEST_SECRET }}
     outputs:
       script-file: ${{ steps.publish.outputs.script-file }}
     steps:
@@ -46,7 +47,8 @@ jobs:
           name: demo-artifact
           path: dist
       - name: Check ENV
-        run: env
+        run: |
+          env
   deploy:
     needs: build
     runs-on: ubuntu-latest
