@@ -51,4 +51,4 @@ jobs:
         uses: actions/deploy-pages@v1
       - name: ECHO
         run: |
-          echo $ {{ steps.deployment.outputs.page_url }}
+          echo ${{ steps.deployment.outputs.page_url }}
