@@ -90,8 +90,8 @@ jobs:
     env:
       IS_TESTING: ${{ secrets.IS_TESTING }}
     steps:
-      name: ECHO
-      run: |
-        env
+      - name: ECHO
+        run: |
+          env
 
 #
