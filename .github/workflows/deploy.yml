@@ -97,5 +97,9 @@ jobs:
           fi
       - name: Build
         run: npm run build
-      - name: ECHO
+      - name: List Current Directory
         run: ls -la
+      - name: List node_modules
+        run: ls ./node_modules
+      - name: PWD
+        run: pwd
