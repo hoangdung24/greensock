@@ -26,7 +26,6 @@ jobs:
         run: echo "Deploying..."
   report:
     runs-on: ubuntu-latest
-    continue-on-error:
     needs: [deploy]
     steps:
       - name: Check context

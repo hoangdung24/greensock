@@ -35,8 +35,21 @@ jobs:
         with:
           node-version: 18
           cache: "npm"
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        id: deps-node-modules
+        with:
+          path: ~/.npm
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            deps-node-modules-
       - name: Install dependencies
-        run: npm install
+        run: |
+          if [[ -e package-lock.json ]]; then
+          npm ci
+          else
+          npm i
+          fi
       - name: Build
         run: npm run build
       - name: Setup Pages
@@ -57,3 +70,29 @@ jobs:
         if: failure() && steps.deployment.outcome == 'success'
         run: |
           echo "Hello World"
+  test-cache:
+    runs-on: ubuntu-latest
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: "npm"
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        id: deps-node-modules
+        with:
+          path: ~/.npm
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            deps-node-modules-
+      - name: Install dependencies
+        run: |
+          if [[ -e package-lock.json ]]; then
+          npm ci
+          else
+          npm i
+          fi
+      - name: Build
+        run: npm run build
