@@ -35,6 +35,8 @@ jobs:
         with:
           node-version: 18
           cache: "npm"
+      - name: LS before cache
+        run: ls
       - name: Cache dependencies
         uses: actions/cache@v3
         id: node-modules
@@ -51,6 +53,8 @@ jobs:
           else
           npm i
           fi
+      - name: LS after install dependences
+        run: ls
       - name: Build
         run: npm run build
       - name: Setup Pages
