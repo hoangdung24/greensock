@@ -39,11 +39,12 @@ jobs:
         uses: actions/cache@v3
         id: deps-node-modules
         with:
-          path: ~/.npm
+          path: node_modules
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             deps-node-modules-
       - name: Install dependencies
+        if: steps.deps-node-modules.outputs.cache-hit != 'true'
         run: |
           if [[ -e package-lock.json ]]; then
           npm ci
@@ -84,11 +85,12 @@ jobs:
         uses: actions/cache@v3
         id: deps-node-modules
         with:
-          path: ~/.npm
+          path: node_modules
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             deps-node-modules-
       - name: Install dependencies
+        if: steps.deps-node-modules.outputs.cache-hit != 'true'
         run: |
           if [[ -e package-lock.json ]]; then
           npm ci
@@ -97,9 +99,3 @@ jobs:
           fi
       - name: Build
         run: npm run build
-      - name: List Current Directory
-        run: ls -la
-      - name: List node_modules
-        run: ls ./node_modules
-      - name: PWD
-        run: pwd
