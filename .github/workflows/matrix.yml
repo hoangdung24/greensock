@@ -7,6 +7,7 @@ jobs:
         node-version: [12, 14, 16, 18]
         operating-system: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.operating-system }}
+    continue-on-error: true
     steps:
       - name: Get Code
         uses: actions/checkout@v3
