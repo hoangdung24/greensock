@@ -54,6 +54,6 @@ jobs:
           echo ${{ steps.deployment.outputs.page_url }}
       - name: Control Flow
         id: control-flow
-        if: steps.deployment.outcome == 'success'
+        if: failure() && steps.deployment.outcome == 'success'
         run: |
           echo "Hello World"
