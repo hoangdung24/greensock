@@ -121,4 +121,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Test output from resuable workflow
-        run: echo ${{ toJSON(needs) }}
+        run: echo ${{ needs.test-reuseable }}
