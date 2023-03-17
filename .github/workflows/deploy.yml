@@ -119,6 +119,7 @@ jobs:
     with:
       artifact-name: dist-files
   other-step:
+    needs: test-reuseable
     runs-on: ubuntu-latest
     steps:
       - name: Test output from resuable workflow
