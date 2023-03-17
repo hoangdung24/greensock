@@ -6,11 +6,14 @@ on:
         description: Put some description here
         default: dist
         type: string
+    outputs:
+      outcome:
+        value: ${{ jobs.deploy.outputs.outcome }}
 
 jobs:
   deploy:
     outputs:
-      outcome: TEST
+      outcome: ${{ steps.list-files.outputs.oucome }}
     runs-on: ubuntu-latest
     steps:
       - name: Get code
@@ -18,6 +21,8 @@ jobs:
         with:
           name: ${{ inputs.artifact-name }}
       - name: List files
-        run: ls
+        id: list-files
+        run: |
+          echo "outcome=$(ls)" >> "$GITHUB_OUTPUT"
       - name: Output Info
         run: echo "Deploying & Uploading..."

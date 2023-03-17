@@ -117,3 +117,6 @@ jobs:
     uses: ./.github/workflows/reusable.yml
     with:
       artifact-name: dist-files
+    steps:
+      - name: Test output from resuable workflow
+        run: echo ${{ toJSON(needs) }}
