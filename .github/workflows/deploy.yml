@@ -103,3 +103,5 @@ jobs:
           fi
       - name: Build
         run: npm run build
+  test-reuseable:
+    uses: ./.github/workflows/reusable.yml
