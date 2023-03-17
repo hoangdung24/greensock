@@ -6,6 +6,8 @@ on:
         description: Put some description here
         default: dist
         type: string
+    secrets:
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
