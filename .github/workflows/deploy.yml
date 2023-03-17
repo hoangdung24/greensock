@@ -57,14 +57,17 @@ jobs:
         run: ls
       - name: Build
         run: npm run build
-
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
           name: dist-files
           path: ./dist
+
+      - name: List
+        run: ls
       - name: Setup Pages
         uses: actions/configure-pages@v3
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
@@ -72,6 +75,7 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
+
       - name: ECHO
         run: |
           echo ${{ steps.deployment.outputs.page_url }}
