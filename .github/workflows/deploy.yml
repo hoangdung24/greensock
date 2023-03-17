@@ -118,6 +118,7 @@ jobs:
     with:
       artifact-name: dist-files
   other-step:
+    runs-on: ubuntu-latest
     steps:
       - name: Test output from resuable workflow
         run: echo ${{ toJSON(needs) }}
