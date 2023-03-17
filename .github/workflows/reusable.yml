@@ -23,6 +23,6 @@ jobs:
       - name: List files
         id: list-files
         run: |
-          echo "outcome=$(ls)" >> "$GITHUB_OUTPUT"
+          echo "outcome=$(ls | tr '\n' ' ')" >> "$GITHUB_OUTPUT"
       - name: Output Info
         run: echo "Deploying & Uploading..."
