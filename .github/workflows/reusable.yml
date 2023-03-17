@@ -6,10 +6,11 @@ on:
         description: Put some description here
         default: dist
         type: string
-    secrets:
 
 jobs:
   deploy:
+    outputs:
+      outcome: TEST
     runs-on: ubuntu-latest
     steps:
       - name: Get code
