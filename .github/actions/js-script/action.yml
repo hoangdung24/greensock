@@ -4,6 +4,7 @@ inputs:
   bucket:
     description: "Bucket"
     required: false
+    default: "I'm a bucket"
 runs:
   using: "node16"
   main: "main.js"

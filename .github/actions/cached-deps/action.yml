@@ -25,10 +25,11 @@ runs:
         npm ci
       shell: bash
     - name: Output value caching
+      id: test-output
       run: |
         echo "cache=${{inputs.caching}}" >> $GITHUB_OUTPUT
       shell: bash
     - name: Check Info Output
       run: |
-        echo ${{ toJSON(steps.install.outputs) }}
+        echo ${{ toJSON(steps.test-output.outputs) }}
       shell: bash

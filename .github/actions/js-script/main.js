@@ -4,6 +4,7 @@ const exec = require("@actions/exec");
 
 function run() {
   // console.log("HELLO WORLD FROM GITHUB ACTION");
+  core.notice(core.getInput("bucket"));
   core.notice("HELLO WORLD FROM GITHUB ACTION");
 }
 
