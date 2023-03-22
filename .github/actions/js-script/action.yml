@@ -3,7 +3,7 @@ description: "Deploying..."
 inputs:
   bucket:
     description: "Bucket"
-    required: true
+    required: false
 runs:
   using: "node16"
   main: "main.js"
