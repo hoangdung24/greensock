@@ -20,3 +20,9 @@ jobs:
       - name: Output info
         run: |
           echo "Used cache? ${{ steps.cache-deps.outputs.used-cache }}"
+
+  informaion:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output script from JS Script
+        uses: "./.github/actions/js-script"
