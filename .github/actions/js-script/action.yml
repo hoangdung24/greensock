@@ -1,5 +1,9 @@
 name: "Run action with JS"
 description: "Deploying..."
+inputs:
+  bucket:
+    description: "Bucket"
+    required: true
 runs:
   using: "node16"
   main: "main.js"
