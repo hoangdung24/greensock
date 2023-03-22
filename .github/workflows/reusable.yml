@@ -1,29 +1,29 @@
-name: Reusable Deploy
-on:
-  workflow_call:
-    inputs:
-      artifact-name:
-        description: Put some description here
-        default: dist
-        type: string
-    outputs:
-      outcome:
-        value: ${{ jobs.deploy.outputs.outcome }}
+# name: Reusable Deploy
+# on:
+#   workflow_call:
+#     inputs:
+#       artifact-name:
+#         description: Put some description here
+#         default: dist
+#         type: string
+#     outputs:
+#       outcome:
+#         value: ${{ jobs.deploy.outputs.outcome }}
 
-jobs:
-  deploy:
-    outputs:
-      outcome: ${{ steps.list-files.outputs.oucome }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get code
-        uses: actions/download-artifact@v3
-        with:
-          name: ${{ inputs.artifact-name }}
-      - name: List files
-        id: list-files
-        run: |
-          ls
-          echo "outcome=$(ls | tr '\n' ' ')" >> "$GITHUB_OUTPUT"
-      - name: Output Info
-        run: echo "Deploying & Uploading..."
+# jobs:
+#   deploy:
+#     outputs:
+#       outcome: ${{ steps.list-files.outputs.oucome }}
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Get code
+#         uses: actions/download-artifact@v3
+#         with:
+#           name: ${{ inputs.artifact-name }}
+#       - name: List files
+#         id: list-files
+#         run: |
+#           ls
+#           echo "outcome=$(ls | tr '\n' ' ')" >> "$GITHUB_OUTPUT"
+#       - name: Output Info
+#         run: echo "Deploying & Uploading..."
