@@ -19,7 +19,7 @@ jobs:
           npm run build
       - name: Output info
         run: |
-          echo "Used cache? ${{ steps.cache-deps.outputs.used-cache }}"
+          echo "Used cache? ${{ toJSON(steps.cache-deps) }}"
 
   informaion:
     runs-on: ubuntu-latest
