@@ -27,6 +27,7 @@ runs:
     - name: Output value caching
       run: |
         echo "cache=${{inputs.caching}}" >> $GITHUB_OUTPUT
+      shell: bash
     - name: Check Info Output
       run: |
         echo ${{ toJSON(steps.install.outputs) }}
