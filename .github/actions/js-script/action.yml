@@ -1,0 +1,5 @@
+name: "Run action with JS"
+description: "Deploying..."
+runs:
+  using: "node16"
+  main: "main.js"
