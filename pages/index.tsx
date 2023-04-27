@@ -1,7 +1,5 @@
-import Home from "@/containers/Home/Home";
-
 function HomePage() {
-  return <Home />;
+  return null;
 }
 
 export default HomePage;

@@ -13,39 +13,38 @@ const Lesson = () => {
       ScrollTrigger.defaults({
         markers: true,
       });
-
       const sections = gsap.utils.toArray<HTMLDivElement>("section");
+      let maxWidth = 3000;
 
-      let maxWidth = 0;
-
-      sections.forEach((section) => {
-        maxWidth += section.offsetWidth;
-      });
+      // sections.forEach((section) => {
+      //   maxWidth += section.offsetWidth;
+      // });
 
       gsap.to(sections, {
-        x: `-${maxWidth}`,
+        xPercent: -100,
+        ease: "none",
         scrollTrigger: {
           trigger: "body",
           scrub: true,
-          end: () => `+=${maxWidth}`,
-          markers: false,
         },
       });
 
-      ScrollTrigger.create({
-        trigger: ".landing_big_text_container",
-        pin: true,
-        scrub: true,
-        start: "top center",
-        end: `+=${maxWidth}`,
+      gsap.to(".landing_big_text_container", {
+        scrollTrigger: {
+          trigger: ".landing_big_text_container",
+          pin: ".landing_big_text_container",
+          start: "top center",
+          end: maxWidth,
+        },
       });
 
-      ScrollTrigger.create({
-        trigger: ".landing_big_text_container_1",
-        pin: true,
-        scrub: true,
-        start: "top center",
-        end: `+=${maxWidth}`,
+      gsap.to(".landing_big_text_container_1", {
+        scrollTrigger: {
+          trigger: ".landing_big_text_container_1",
+          pin: ".landing_big_text_container_1",
+          start: "top center",
+          end: maxWidth,
+        },
       });
     }, containerRef);
 
@@ -80,7 +79,7 @@ const Lesson = () => {
           <div
             className="padding_className"
             style={{
-              height: 2000,
+              height: 4000,
             }}
           ></div>
         </div>

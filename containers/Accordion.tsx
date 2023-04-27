@@ -10,32 +10,34 @@ const Lesson1 = () => {
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
-      ScrollTrigger.defaults({
-        markers: true,
-      });
-
       const tl = gsap.timeline({
         scrollTrigger: {
+          markers: true,
           trigger: ".accordions",
           start: "top top",
-          end: "bottom top",
-          scrub: 1,
+          end: "bottom center",
+          scrub: true,
           pin: true,
         },
       });
 
+      const stagger = 0.5;
+      const duration = 0.5;
+
       tl.to(".accordion .text", {
         height: 0,
-        stagger: 0.5,
-        paddingBottom: 0,
         opacity: 0,
+        paddingBottom: 0,
+        stagger,
+        duration,
       });
 
       tl.to(
         ".accordion",
         {
           marginBottom: 0,
-          stagger: 0.5,
+          stagger,
+          duration,
         },
         "<"
       );
@@ -53,7 +55,7 @@ const Lesson1 = () => {
             <div className="accordion">
               <div className="title">All-screen design.</div>
               <div className="text">
-                Lets you immerse yourself in whatever you’re reading, watching, or
+                Lets you immerse yourself in whatever youre reading, watching, or
                 creating. The 10.9-inch Liquid Retina display features advanced
                 technologies like True Tone, P3 wide color, and an antireflective
                 coating.1
