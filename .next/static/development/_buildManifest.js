@@ -1,0 +1,1 @@
+self.__BUILD_MANIFEST = {__rewrites:{beforeFiles:[],afterFiles:[],fallback:[]},"/_error":["static\u002Fchunks\u002Fpages\u002F_error.js"],"/sticky-stack-layer":["static\u002Fchunks\u002Fpages\u002Fsticky-stack-layer.js"],sortedPages:["\u002F_app","\u002F_error","\u002Fsticky-stack-layer"]};self.__BUILD_MANIFEST_CB && self.__BUILD_MANIFEST_CB()
